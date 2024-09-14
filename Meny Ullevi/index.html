@@ -1,47 +1,15 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <link rel="apple-touch-icon" href="ullevitk_logo_192.png">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ullevi Tennisklubb Aktivitetsmeny</title>
-    <button id="installButton" style="display:none;">Installera Ullevi TK-appen</button>
 
-    <script>
-      let deferredPrompt;
-      const installButton = document.getElementById('installButton');
-    
-      // Lyssna på beforeinstallprompt-händelsen
-      window.addEventListener('beforeinstallprompt', (e) => {
-        // Förhindra att prompten visas omedelbart
-        e.preventDefault();
-        deferredPrompt = e;
-        // Visa installationsknappen
-        installButton.style.display = 'block';
-    
-        installButton.addEventListener('click', () => {
-          // Dölj installationsknappen
-          installButton.style.display = 'none';
-          // Visa installationsprompten
-          deferredPrompt.prompt();
-          deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-              console.log('Användaren accepterade installationen');
-            } else {
-              console.log('Användaren avböjde installationen');
-            }
-            deferredPrompt = null;
-          });
-        });
-      });
-    </script>
-    
     <!-- Länka manifestfilen -->
-    <link rel="manifest" href="manifest.json">  <!-- Här är referensen till manifest.json -->
+    <link rel="manifest" href="manifest.json">
 
     <!-- Ikoner för Apple-enheter -->
-    <link rel="apple-touch-icon" href="ullevitk_logo.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#00796b">
 
     <style>
@@ -53,7 +21,6 @@
             color: #333;
         }
 
-        /* Navigation styles */
         nav {
             background-color: #00796b;
             padding: 15px;
@@ -172,9 +139,7 @@
     <!-- Startsida -->
     <div class="container">
         <img src="ullevitk_logo.png" alt="Ullevi Tennisklubb Logotyp" style="width:200px; height:auto;">
-
         <h1>Ullevi Tennisklubb Aktivitetsmeny</h1>
-        
         <p>“Fem nivåer, oändliga möjligheter – för spelare på alla nivåer mitt i centrum”</p>
         <a href="#green" class="btn">Utforska Aktiviteter</a>
     </div>
@@ -243,7 +208,7 @@
     <!-- Svart Nivå -->
     <div id="black" class="level black">
         <h2>Svart Nivå (5/5)</h2>
-        <p style="color: white;">Svart nivå är för de mest avancerade spelarna, ofta tidigare tävlingsspelare eller personer med lång erfarenhet av tennis. Träningen fokuserar på detaljer snarare än grunder, och följer en liknande struktur som för klubbens tävlingsjuniorer. Även här krävs en rekommendation från en av klubbens tränare för att delta.</p>
+        <p>Svart nivå är för de mest avancerade spelarna, ofta tidigare tävlingsspelare eller personer med lång erfarenhet av tennis. Träningen fokuserar på detaljer snarare än grunder, och följer en liknande struktur som för klubbens tävlingsjuniorer. Även här krävs en rekommendation från en av klubbens tränare för att delta.</p>
         <ul>
             <li><a href="https://share.matchi.com/activities/1450" target="_blank">Tennispasset Svart</a></li>
             <li><a href="https://share.matchi.com/activities/89916" target="_blank">Tennispasset Svart 90 minuter</a></li>
@@ -257,7 +222,7 @@
         </ul>
     </div>
 
-    <!-- Registrera service worker -->
+    <!-- Service Worker -->
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/service-worker.js')
@@ -269,7 +234,10 @@
         });
       }
     </script>
+
 </body>
 </html>
+
+
 
 
